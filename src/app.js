@@ -1,6 +1,7 @@
 const express = require('express');
 const index = require('./routes/index.controller');
 const exceptionHandler = require('./exception-handler');
+
 const app = express();
 
 app.use('/', index);
