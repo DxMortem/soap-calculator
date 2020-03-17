@@ -4,7 +4,8 @@
         "node": true
     },
     "extends": [
-        "airbnb-base"
+        "airbnb-base",
+        "plugin:json/recommended-with-comments"
     ],
     "globals": {
         "Atomics": "readonly",
