@@ -1,1 +1,3 @@
-#Soap Calculator
+# Soap Calculator
+
+Used as NodeJS training
