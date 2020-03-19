@@ -6,7 +6,7 @@ const calc = require('./routes/calc.controller');
 const app = express();
 
 app.use('/', index);
-app.use('/*.wsdl',calc.router);
+app.use('/*.wsdl', calc.router);
 
 app.use(express.static('public'));
 app.use('/*', exceptionHandler);
