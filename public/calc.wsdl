@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:ns="http://www.example.com/wsdl/calculator.wsdl"
+                  targetNamespace="http://www.example.com/wsdl/calculator.wsdl">
+    <wsdl:types>
+        <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://www.example.com/wsdl/calculator.wsdl">
+            <xsd:element name="calculatorInput">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="1" name="operation" type="xsd:string"/>
+                        <xsd:element minOccurs="1" name="number1" type="xsd:int"/>
+                        <xsd:element minOccurs="1" name="number2" type="xsd:int"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="calculatorOutput">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="1" name="response" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="calculatorRequest">
+        <wsdl:part name="parameters" element="ns:calculatorInput"/>
+    </wsdl:message>
+
+    <wsdl:message name="calculatorResponse">
+        <wsdl:part name="response" element="ns:calculatorOutput"/>
+    </wsdl:message>
+
+    <wsdl:portType name="calculatorPortType">
+        <wsdl:operation name="calculate">
+            <wsdl:input message="ns:calculatorRequest"/>
+            <wsdl:output message="ns:calculatorResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="calculatorBinding" type="ns:calculatorPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="calculate">
+            <soap:operation style="document" soapAction="ns:calculate"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="Calculator_WS">
+        <wsdl:port name="calculatorPort" binding="ns:calculatorBinding">
+            <soap:address location="http://localhost:6770/calculator"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
