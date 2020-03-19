@@ -1,5 +1,9 @@
 {
   "app": {
     "port": 6770
+  },
+  "soap": {
+    "path": "/calculator",
+    "wsdlFilePath": "/public/calc.wsdl"
   }
 }
