@@ -5,5 +5,15 @@
   "soap": {
     "path": "/calculator",
     "wsdlFilePath": "/public/calc.wsdl"
+  },
+  "logging": {
+    "level": "info",
+    "directory": "logs/",
+    "hostnameAsFileName": false,
+    "filename": "probe_service.log",
+    "transport": {
+      "console": true,
+      "file": true
+    }
   }
 }
