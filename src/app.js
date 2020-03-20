@@ -9,6 +9,6 @@ app.use('/', index);
 app.use('/*.wsdl', calc.router);
 
 app.use(express.static('public'));
-app.use(exceptionHandler);
+app.use('/*', exceptionHandler);
 
 module.exports = app;
